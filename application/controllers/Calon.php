@@ -156,19 +156,257 @@ class Calon extends CI_Controller {
 			$config['upload_path'] = './img_calon/';
 			$foto_ketua = $select->foto_c_ket;
 			$foto_wakil_ketua = $select->foto_c_w_ket;
-			// echo $foto_ketua.' '.$foto_wakil_ketua;die();
-			$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
-			$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+			$data_foto_ketua_baru = $_FILES['foto_calon_ketua']['name'];
+			$data_foto_wakil_ketua_baru = $_FILES['foto_calon_wakil_ketua']['name'];
 
 			if ($foto_ketua != "" && $foto_wakil_ketua != "") {
-				if ($data['foto_c_ket'] == "" && $data['foto_c_w_ket'] == "") {
-					echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru kosong";
-				}elseif($data['foto_c_ket'] == "" && $data['foto_c_w_ket'] != ""){
-					echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru ada";
-				}elseif($data['foto_c_ket'] != "" && $data['foto_c_w_ket'] == ""){
-					echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru ada, foto wakil ketua baru kosong";
-				}elseif($data['foto_c_ket'] != "" && $data['foto_c_w_ket'] != ""){
-					echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru ada, foto wakil ketua baru ada";
+				if ($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru == "") {
+					// echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+
+				}elseif($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru != ""){
+					// echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru == ""){
+					// echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru ada, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru != ""){
+					// echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru ada, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}
+			}elseif($foto_ketua == "" && $foto_wakil_ketua != ""){
+				if ($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru == "") {
+					// echo "Foto ketua lama kosong, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru != ""){
+					// echo "Foto ketua lama kosong, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru == ""){
+					// echo "Foto ketua lama kosong, foto wakil ketua lama ada, foto ketua baru ada, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru != ""){
+					// echo "Foto ketua lama kosong, foto wakil ketua lama ada, foto ketua baru ada, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}
+			}elseif($foto_ketua != "" && $foto_wakil_ketua == ""){
+				if ($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru == "") {
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru kosong, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru != ""){
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru kosong, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru == ""){
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru ada, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru != ""){
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru ada, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}
+			}elseif($foto_ketua == "" && $foto_wakil_ketua == ""){
+				if ($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru == "") {
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru kosong, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru == "" && $data_foto_wakil_ketua_baru != ""){
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru kosong, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $foto_ketua;
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru == ""){
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru ada, foto wakil ketua baru kosong";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $foto_wakil_ketua;
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
+				}elseif($data_foto_ketua_baru != "" && $data_foto_wakil_ketua_baru != ""){
+					echo "Foto ketua lama ada, foto wakil ketua lama kosong, foto ketua baru ada, foto wakil ketua baru ada";
+					#handle data from form
+					$data['no_urut'] = $this->input->post('no_urut');
+					$data['c_ket'] = $this->input->post('nama_calon_ketua');
+					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
+					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
+					$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
+					$data['visi'] = $this->input->post('visi');
+					$data['misi'] = $this->input->post('misi');
+					$awal_periode = $this->input->post('awal_periode');
+					$akhir_periode = $this->input->post('akhir_periode');
+					$data['periode'] = $awal_periode.' - '.$akhir_periode;
+
+					echo json_encode($data);
 				}
 			}
 

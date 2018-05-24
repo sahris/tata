@@ -11,7 +11,7 @@ class M_calon extends CI_Model {
 
 	public function getAll($table)
 	{
-		return $this->db->get($table)->result();
+		return $this->db->order_by('no_urut','ASC')->get($table)->result();
 	}
 
 	public function getOne($table,$id)
