@@ -1,7 +1,7 @@
 <section class="content" style="margin-left: 10px;">
   <div class="row">
     <a href="#form-siswa" data-toggle="modal" class="btn btn-success"><i style="margin-right: 5px;" class="fa fa-plus"></i>Tambah Data Siswa</a>
-     <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+     <table id="table_siswa" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
         <th>NO</th>
@@ -47,11 +47,13 @@
       </tfoot>
     </table>
   </div>
+  <script src="<?=base_url('assets/plugins/jQuery/jquery-2.2.3.min.js')?>"></script>
+  <script type="text/javascript" src="<?=base_url('assets/js/select2.min.js')?>"></script>
   <script type="text/javascript" src="<?=base_url('assets/DataTables/datatables.min.js')?>"></script>
-  <!-- <script type="text/javascript" src="<?=base_url('assets/DataTables/datatables.js')?>"></script> -->
   <script type="text/javascript">
     $(document).ready(function(){
-      $('#table_id').DataTable();
+      $('#table_siswa').DataTable();
+      $('#nis').select2();
     });
   </script>
 </section>

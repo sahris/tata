@@ -75,7 +75,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?=base_url('assets/dist/img/user2-160x160.jpg')?>" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?=$username?></span>
+              <span class="hidden-xs"><?=$username?> <i class="fa fa-sort-down"></i></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -94,7 +94,7 @@
                       echo "Operator";
                     }
                    ?>
-                 </b> <i class="fa  fa-sort-down"></i>
+                 </b>
                 </p>
               </li>
               <!-- Menu Footer-->

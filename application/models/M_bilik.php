@@ -5,7 +5,7 @@ class M_bilik extends CI_Model {
 
 	public function getAll()
 	{
-		return $this->db->get('tb_bilik');
+		return $this->db->get('tb_bilik')->order_by('no_urut','ASC');
 	}
 
 	public function detail($table, $id)

@@ -22,7 +22,7 @@
 		  <a href="<?=base_url('Pegawai')?>" class="btn btn-default">Semua Data</a>
 		  <a href="<?=base_url('Pegawai/getTidakAktif')?>" class="btn btn-danger">Pegawai Tidak Aktif</a>
 		</div>
-	  	<table class="table">
+	  	<table class="table" id="table_pegawai">
 	    <thead>
 	    	<tr>
 	    		<th>NO</th>
@@ -158,9 +158,15 @@
 	</div>
 </section>
 
-<!-- <script src="<?=base_url('assets/js/jquery-3.1.0.min.js')?>"></script> -->
+<script src="<?=base_url('assets/plugins/jQuery/jquery-2.2.3.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/select2.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/DataTables/datatables.min.js')?>"></script>
 
 <script type="text/javascript">
+	$(document).ready(function(){
+      $('#table_pegawai').DataTable();
+      $('#nis').select2();
+    });
 	function update_peg(id) {
 	    //Ajax Load data from ajax
       $.ajax({

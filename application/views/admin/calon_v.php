@@ -339,7 +339,16 @@
 	<?php } ?>
 </section>
 
+<script src="<?=base_url('assets/plugins/jQuery/jquery-2.2.3.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/js/select2.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets/DataTables/datatables.min.js')?>"></script>
+
 <script type="text/javascript">
+	$(document).ready(function(){
+      $('#dataTable').DataTable();
+      $('#nis').select2();
+    });
+
 	function detail(id) {
 		$.ajax({
 			url: "<?=base_url('Calon/getAjax')?>/" + id,
