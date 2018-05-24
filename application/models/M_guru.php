@@ -5,7 +5,7 @@ class M_guru extends CI_Model {
 
 	public function getAll()
 	{
-		return $this->db->get('tb_guru');
+		return $this->db->get('tb_guru')->result();
 	}	
 
 	public function getDetail($id)

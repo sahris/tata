@@ -7,6 +7,9 @@ class User_polling extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('M_user_pemilih','user_pemilih');
+		$this->load->model('M_siswa','siswa');
+		$this->load->model('M_guru','guru');
+		$this->load->model('M_pegawai','pegawai');
 	}
 
 	public function index()
@@ -17,6 +20,18 @@ class User_polling extends CI_Controller {
 		$data['isi'] = $this->user_pemilih->getAll();
 
 		$this->load->view('admin_temp', $data);	
+	}
+
+	public function add()
+	{
+		$data['title'] = "Tambah User Pemilih";
+		$data['content'] = "admin/user_pemilih_v.php";
+		$data['page_load'] = "add";
+		$data['data_siswa'] = $this->siswa->getAll();
+		$data['data_guru'] = $this->guru->getAll();
+		$data['data_pegawai'] = $this->pegawai->getAll();
+
+		$this->load->view('admin_temp', $data);
 	}
 
 }

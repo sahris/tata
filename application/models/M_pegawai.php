@@ -5,7 +5,7 @@ class M_pegawai extends CI_Model {
 
 	public function getAll()
 	{
-		return $this->db->get('tb_pegawai');
+		return $this->db->get('tb_pegawai')->result();
 	}
 
 	public function getAktif()

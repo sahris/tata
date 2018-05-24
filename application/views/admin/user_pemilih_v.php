@@ -12,7 +12,7 @@
 			</div>
 		<?php endif ?>
 		<div class="table-responsive">
-			<a class="btn btn-primary" href="<?=base_url('Calon/add')?>">Tambah Data <i class="fa fa-plus"></i></a>
+			<a class="btn btn-primary" href="<?=base_url('User_polling/add')?>">Tambah Data <i class="fa fa-plus"></i></a>
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 		        <thead>
 		            <tr>
@@ -45,7 +45,7 @@
 		                <h3>Tidak ada Data Poli</h3>
 		            <?php endif;?>
 		        </tbody>
-		    </table>
+		  </table>
 		</div>
 		<!-- Modal delete-->
 		<div id="myModalDelete" class="modal fade" role="dialog">
@@ -148,89 +148,133 @@
 		</div>
 	<?php }elseif ($page_load == "add") { ?>
 		<section class="content">
-			<div class="adah-form">
-				<?php echo form_open_multipart('Calon/daftar'); ?>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>No Urut</label>
-								<input class="form-control" type="number" name="no_urut" placeholder="No Urut" required>
-								<span class="ntf_error" id="ntf_no_urut"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Periode</label>
-								<div class="row">
-									<div class="col-lg-6">
-										<input class="form-control" type="number" name="awal_periode" placeholder="Tahun awal periode" required>
-									</div>
-									<div class="col-lg-6">
-										<input class="form-control" type="number" name="akhir_periode" placeholder="Tahun akhir periode" required>
-									</div>
-								</div>
-								<span class="ntf_error" id="ntf_no_urut"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Nama Calon Ketua</label>
-								<input class="form-control" type="text" name="nama_calon_ketua" placeholder="Nama Calon Ketua" required>
-								<span class="ntf_error" id="ntf_nama_ketua"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Nama Calon Wakil Ketua</label>
-								<input class="form-control" type="text" name="nama_calon_wakil_ketua" placeholder="Nama Calon Wakil Ketua" required>
-								<span class="ntf_error" id="ntf_nama_wakil_ketua"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Foto Calon Ketua</label>
-								<input class="form-control" type="file" name="foto_calon_ketua">
-								<span class="ntf_error" id="ntf_calon_ketua"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Foto Calon Wakil Ketua</label>
-								<input class="form-control" type="file" name="foto_calon_wakil_ketua">
-								<span class="ntf_error" id="ntf_calon_wakil_ketua"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Visi</label>
-								<textarea placeholder="Masukkan visi disini" name="visi" class="form-control" required></textarea>
-								<span class="ntf_error" id="ntf_visi"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Misi</label>
-								<textarea placeholder="Masukkan misi disini" name="misi" class="form-control" required></textarea>
-								<span class="ntf_error" id="ntf_misi"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<a href="<?=base_url('Calon')?>" name="simpan" class="btn btn-default"><i class="fa fa-arrow-left"></i> Kembali</a>
-								<button type="submit" name="simpan" class="btn btn-primary">Simpan <i class="fa fa-save"></i></button>
-							</div>
-						</div>
-					</div>
-				<?php echo form_close(); ?>				
-			</div>
+			<div class="table-responsive">
+			<a class="btn btn-primary" href="#">Selesai <i class="fa fa-check"></i></a>
+			<div class="row">
+        <!-- Left col -->
+        <div class="nav-tabs-custom">
+          <!-- Tabs within a box -->
+          <ul class="nav nav-tabs pull-right">
+            <li><a href="#guru" data-toggle="tab">Belum Memilih</a></li>
+            <li><a href="#pegawai" data-toggle="tab">Sudah Memilih</a></li>
+            <li class="active"><a href="#siswa" data-toggle="tab">Hasil Sementara</a></li>
+            <li class="pull-left header"><i class="fa fa-inbox"></i> Diagram Perolehan</li>
+          </ul>
+          <div class="tab-content no-padding">
+            <!-- Morris chart - Sales -->
+            <table class="table table-bordered tab-pane active" style="position: relative;" id="siswa" width="100%" cellspacing="0">
+			        <thead>
+			            <tr>
+			            <th>NO</th>
+			            <th>NIS</th>
+			            <th>NAMA SISWA</th>
+			            <th>KELAS</th>
+			            <th>TAHUN</th>
+			            <th>STATUS</th>
+			            <th>AKSI</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
+			            <?php $no=1; foreach($data_siswa as $key => $data):?>
+			            <tr>
+			                <td><?=$no++;?></td>
+			                <td><?=$data->nis;?></td>
+			                <td><?=$data->nama;?></td>
+			                <td><?=$data->kelas;?></td>
+			                <td><?=$data->tahun_masuk;?></td>
+			                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
+			                <td>
+			                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
+			                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
+			                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
+			                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
+			                </td>
+			            </tr>
+			            <?php endforeach;?>
+			            <?php else: ?>
+			                <h3>Tidak ada Data Siswa</h3>
+			            <?php endif;?>
+			        </tbody>
+			  		</table>
+			  		<table class="table table-bordered tab-pane" style="position: relative;" id="guru" width="100%" cellspacing="0">
+			        <thead>
+			            <tr>
+			            <th>NO</th>
+			            <th>NIS</th>
+			            <th>NAMA SISWA</th>
+			            <th>KELAS</th>
+			            <th>TAHUN</th>
+			            <th>STATUS</th>
+			            <th>AKSI</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
+			            <?php $no=1; foreach($data_siswa as $key => $data):?>
+			            <tr>
+			                <td><?=$no++;?></td>
+			                <td><?=$data->nis;?></td>
+			                <td><?=$data->nama;?></td>
+			                <td><?=$data->kelas;?></td>
+			                <td><?=$data->tahun_masuk;?></td>
+			                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
+			                <td>
+			                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
+			                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
+			                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
+			                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
+			                </td>
+			            </tr>
+			            <?php endforeach;?>
+			            <?php else: ?>
+			                <h3>Tidak ada Data Guru</h3>
+			            <?php endif;?>
+			        </tbody>
+			  		</table>
+			  		<table class="table table-bordered tab-pane" style="position: relative;" id="pegawai" width="100%" cellspacing="0">
+			        <thead>
+			            <tr>
+			            <th>NO</th>
+			            <th>NIS</th>
+			            <th>NAMA SISWA</th>
+			            <th>KELAS</th>
+			            <th>TAHUN</th>
+			            <th>STATUS</th>
+			            <th>AKSI</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
+			            <?php $no=1; foreach($data_siswa as $key => $data):?>
+			            <tr>
+			                <td><?=$no++;?></td>
+			                <td><?=$data->nis;?></td>
+			                <td><?=$data->nama;?></td>
+			                <td><?=$data->kelas;?></td>
+			                <td><?=$data->tahun_masuk;?></td>
+			                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
+			                <td>
+			                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
+			                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
+			                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
+			                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
+			                </td>
+			            </tr>
+			            <?php endforeach;?>
+			            <?php else: ?>
+			                <h3>Tidak ada Data Pegawai</h3>
+			            <?php endif;?>
+			        </tbody>
+			  		</table>
+            <!-- <div class="chart tab-pane active" id="siswa" style="position: relative; height: 300px;"></div>
+            <div class="chart tab-pane" id="guru" style="position: relative; height: 300px;"></div>
+            <div class="chart tab-pane" id="pegawai" style="position: relative; height: 300px;"></div> -->
+          </div>
+        </div>
+      </div>
+			
+		</div>
 		</section>
 	<?php }elseif ($page_load == "edit") { ?>
 		<?php 
@@ -238,99 +282,7 @@
 			$awal = explode(' - ', $periode);
 		 ?>
 		<section class="content">
-			<div class="adah-form">
-				<?php echo form_open_multipart('Calon/edit_proses'); ?>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>No Urut</label>
-								<input class="form-control" type="number" name="no_urut" value="<?=$data_calon->no_urut;?>" placeholder="No Urut" required>
-								<input class="form-control" type="hidden" name="id_calon" value="<?=$data_calon->id_calon;?>" placeholder="No Urut">
-								<span class="ntf_error" id="ntf_no_urut"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Periode</label>
-								<div class="row">
-									<div class="col-lg-6">
-										<input class="form-control" type="number" value="<?=$awal[0]?>" name="awal_periode" placeholder="Tahun awal periode" required>
-									</div>
-									<div class="col-lg-6">
-										<input class="form-control" type="number" value="<?=$awal[1]?>" name="akhir_periode" placeholder="Tahun akhir periode" required>
-									</div>
-								</div>
-								<span class="ntf_error" id="ntf_no_urut"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Nama Calon Ketua</label>
-								<input class="form-control" type="text" value="<?=$data_calon->c_ket;?>" name="nama_calon_ketua" placeholder="Nama Calon Ketua" required>
-								<span class="ntf_error" id="ntf_nama_ketua"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Nama Calon Wakil Ketua</label>
-								<input class="form-control" type="text" value="<?=$data_calon->cw_ket;?>" name="nama_calon_wakil_ketua" placeholder="Nama Calon Wakil Ketua" required>
-								<span class="ntf_error" id="ntf_nama_wakil_ketua"></span>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Visi</label>
-								<textarea placeholder="Masukkan visi disini" name="visi" class="form-control" required><?=$data_calon->visi;?></textarea>
-								<span class="ntf_error" id="ntf_visi"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Misi</label>
-								<textarea placeholder="Masukkan misi disini" name="misi" class="form-control" required><?=$data_calon->misi;?></textarea>
-								<span class="ntf_error" id="ntf_misi"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Foto Calon Ketua</label>
-								<input class="form-control" type="file" name="foto_calon_ketua">
-								<span class="ntf_error" id="ntf_calon_ketua"></span>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label>Foto Calon Wakil Ketua</label>
-								<input class="form-control" type="file" name="foto_calon_wakil_ketua">
-								<span class="ntf_error" id="ntf_calon_wakil_ketua"></span>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-6">
-							<img style="width: 40%;height: auto;" src="<?=base_url()?>img_calon/<?=$data_calon->foto_c_ket?>">
-						</div>
-						<div class="col-lg-6">
-							<img style="width: 40%;height: auto;" src="<?=base_url()?>img_calon/<?=$data_calon->foto_c_w_ket?>">
-						</div>
-					</div>
-					<div class="row" style="margin-top: 20px;">
-						<div class="col-lg-6">
-							<div class="form-group">
-								<a href="<?=base_url('Calon')?>" class="btn btn-default"><i class="fa fa-arrow-left"></i> Kembali</a>
-								<button type="submit" name="update" class="btn btn-success">Simpan Perubahan <i class="fa fa-save"></i></button>
-							</div>
-						</div>
-					</div>
-				<?php echo form_close(); ?>				
-			</div>
+			
 		</section>
 	<?php } ?>
 </section>
@@ -341,7 +293,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-      $('#dataTable').DataTable();
+      $('#siswa').DataTable();
+      $('#guru').DataTable();
+      $('#pegawai').DataTable();
       $('#nis').select2();
     });
 

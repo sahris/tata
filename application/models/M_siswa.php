@@ -5,7 +5,7 @@ class M_siswa extends CI_Model {
 
 	public function getAll()
 	{
-		return $this->db->get('tb_siswa');
+		return $this->db->get('tb_siswa')->result();
 	}
 
 }
