@@ -94,7 +94,7 @@
                       echo "Operator";
                     }
                    ?>
-                 </b>
+                 </b> <i class="fa  fa-sort-down"></i>
                 </p>
               </li>
               <!-- Menu Footer-->
