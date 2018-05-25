@@ -9,9 +9,9 @@ class M_calon extends CI_Model {
 		
 	}	
 
-	public function getAll($table)
+	public function getAll($table, $tahun)
 	{
-		return $this->db->order_by('no_urut','ASC')->get($table)->result();
+		return $this->db->order_by('no_urut','ASC')->get_where($table,['tahun' => $tahun])->result();
 	}
 
 	public function getOne($table,$id)

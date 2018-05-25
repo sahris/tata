@@ -14,8 +14,8 @@ class Calon extends CI_Controller {
 		$data['title'] = "Master Calon";
 		$data['content'] = "admin/calon_v.php";
 		$data['page_load'] = "view";
-
-		$data['isi'] = $this->calon->getAll('tb_calon');
+		$tahun = $this->session->userdata('tahun');
+		$data['isi'] = $this->calon->getAll('tb_calon',$tahun);
 		$this->load->view('admin_temp', $data);
 	}
 

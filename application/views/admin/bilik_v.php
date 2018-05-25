@@ -1,3 +1,8 @@
+<style type="text/css">
+	#btn_setting:hover{
+		background: green;
+	}
+</style>
 <section class="content">
 	<?php 
 		if ($this->session->flashdata('success')) {
@@ -39,14 +44,15 @@
 				            <li><a href="#">Status <span class="pull-right">
 				            <?php 
 				            	if ($data->status == 1) {
-				            		echo "Aktif";
+				            		echo "<span class=\"label label-success\">Aktif</span>";
 				            	}elseif($data->status == 0){
-				            		echo "Tidak Aktif";
+				            		echo "<span class=\"label label-danger\">Tidak Aktif</span>";
 				            	}
 				             ?></span></a></li>
 				            <li>
-				            	<button class="btn btn-success" style="width: 49%;" class="text-center" onclick="detail(<?=$data->id_bilik?>)">Lihat Detail <i class="fa fa-chevron-right"></i></button>
+				            	<a class="btn btn-success" id="btn_setting" style="color: white;" href="<?=base_url('Dashboard/index')."/".$data->tahun;?>">Atur Bilik <i class="fa fa-cog"></i></a>
 			            		<button class="btn btn-warning" style="width: 49%;" id="btn-aktif-<?=$data->id_bilik?>" class="text-center" onclick="update(<?=$data->id_bilik?>)">Edit <i class="fa fa-pencil"></i></button>
+			            		<button class="btn btn-danger" style="width: 49%;" id="btn-aktif-<?=$data->id_bilik?>" class="text-center" onclick="update(<?=$data->id_bilik?>)">Hapus <i class="fa fa-trash"></i></button>
 				            </li>
 				          </ul>
 				        </div>

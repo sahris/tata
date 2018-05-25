@@ -188,7 +188,7 @@
             <li><a href="<?=base_url().'user_polling'?>"><i class="fa fa-circle-o"></i> User Polling</a></li>
           </ul>
       </ul>
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu" style="<?php if ($this->session->userdata('hak_akses') == 1) {echo "display: block;";}else{echo "display: none;";} ?>">
         <li class="header">MANAGEMEN SYSTEM</li>
         <li class="treeview">
           <a href="<?=base_url().'manageuser'?>">

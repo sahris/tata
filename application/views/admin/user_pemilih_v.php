@@ -150,130 +150,125 @@
 		<section class="content">
 			<div class="table-responsive">
 			<a class="btn btn-primary" href="#">Selesai <i class="fa fa-check"></i></a>
-			<div class="row">
-        <!-- Left col -->
-        <div class="nav-tabs-custom">
-          <!-- Tabs within a box -->
-          <ul class="nav nav-tabs pull-right">
-            <li><a href="#guru" data-toggle="tab">Belum Memilih</a></li>
-            <li><a href="#pegawai" data-toggle="tab">Sudah Memilih</a></li>
-            <li class="active"><a href="#siswa" data-toggle="tab">Hasil Sementara</a></li>
-            <li class="pull-left header"><i class="fa fa-inbox"></i> Diagram Perolehan</li>
-          </ul>
-          <div class="tab-content no-padding">
-            <!-- Morris chart - Sales -->
-            <table class="table table-bordered tab-pane active" style="position: relative;" id="siswa" width="100%" cellspacing="0">
-			        <thead>
-			            <tr>
-			            <th>NO</th>
-			            <th>NIS</th>
-			            <th>NAMA SISWA</th>
-			            <th>KELAS</th>
-			            <th>TAHUN</th>
-			            <th>STATUS</th>
-			            <th>AKSI</th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
-			            <?php $no=1; foreach($data_siswa as $key => $data):?>
-			            <tr>
-			                <td><?=$no++;?></td>
-			                <td><?=$data->nis;?></td>
-			                <td><?=$data->nama;?></td>
-			                <td><?=$data->kelas;?></td>
-			                <td><?=$data->tahun_masuk;?></td>
-			                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
-			                <td>
-			                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
-			                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
-			                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
-			                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
-			                </td>
-			            </tr>
-			            <?php endforeach;?>
-			            <?php else: ?>
-			                <h3>Tidak ada Data Siswa</h3>
-			            <?php endif;?>
-			        </tbody>
-			  		</table>
-			  		<table class="table table-bordered tab-pane" style="position: relative;" id="guru" width="100%" cellspacing="0">
-			        <thead>
-			            <tr>
-			            <th>NO</th>
-			            <th>NIS</th>
-			            <th>NAMA SISWA</th>
-			            <th>KELAS</th>
-			            <th>TAHUN</th>
-			            <th>STATUS</th>
-			            <th>AKSI</th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
-			            <?php $no=1; foreach($data_siswa as $key => $data):?>
-			            <tr>
-			                <td><?=$no++;?></td>
-			                <td><?=$data->nis;?></td>
-			                <td><?=$data->nama;?></td>
-			                <td><?=$data->kelas;?></td>
-			                <td><?=$data->tahun_masuk;?></td>
-			                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
-			                <td>
-			                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
-			                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
-			                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
-			                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
-			                </td>
-			            </tr>
-			            <?php endforeach;?>
-			            <?php else: ?>
-			                <h3>Tidak ada Data Guru</h3>
-			            <?php endif;?>
-			        </tbody>
-			  		</table>
-			  		<table class="table table-bordered tab-pane" style="position: relative;" id="pegawai" width="100%" cellspacing="0">
-			        <thead>
-			            <tr>
-			            <th>NO</th>
-			            <th>NIS</th>
-			            <th>NAMA SISWA</th>
-			            <th>KELAS</th>
-			            <th>TAHUN</th>
-			            <th>STATUS</th>
-			            <th>AKSI</th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
-			            <?php $no=1; foreach($data_siswa as $key => $data):?>
-			            <tr>
-			                <td><?=$no++;?></td>
-			                <td><?=$data->nis;?></td>
-			                <td><?=$data->nama;?></td>
-			                <td><?=$data->kelas;?></td>
-			                <td><?=$data->tahun_masuk;?></td>
-			                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
-			                <td>
-			                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
-			                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
-			                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
-			                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
-			                </td>
-			            </tr>
-			            <?php endforeach;?>
-			            <?php else: ?>
-			                <h3>Tidak ada Data Pegawai</h3>
-			            <?php endif;?>
-			        </tbody>
-			  		</table>
-            <!-- <div class="chart tab-pane active" id="siswa" style="position: relative; height: 300px;"></div>
-            <div class="chart tab-pane" id="guru" style="position: relative; height: 300px;"></div>
-            <div class="chart tab-pane" id="pegawai" style="position: relative; height: 300px;"></div> -->
-          </div>
-        </div>
-      </div>
-			
+			<ul class="nav nav-tabs">
+		    <li class="active"><a data-toggle="tab" href="#siswa_tab">Siswa</a></li>
+		    <li><a data-toggle="tab" href="#guru_tab">Guru</a></li>
+		    <li><a data-toggle="tab" href="#pegawai_tab">Pegawai</a></li>
+		  </ul>
+
+		  <div class="tab-content">
+		    <div id="siswa_tab" class="tab-pane fade">
+		      <table class="table table-bordered tab-pane active" style="position: relative;" id="siswa" width="100%" cellspacing="0">
+		        <thead>
+		            <tr>
+		            <th>NO</th>
+		            <th>NIS</th>
+		            <th>NAMA SISWA</th>
+		            <th>KELAS</th>
+		            <th>TAHUN</th>
+		            <th>STATUS</th>
+		            <th>AKSI</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
+		            <?php $no=1; foreach($data_siswa as $key => $data):?>
+		            <tr>
+		                <td><?=$no++;?></td>
+		                <td><?=$data->nis;?></td>
+		                <td><?=$data->nama;?></td>
+		                <td><?=$data->kelas;?></td>
+		                <td><?=$data->tahun_masuk;?></td>
+		                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
+		                <td>
+		                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
+		                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
+		                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
+		                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
+		                </td>
+		            </tr>
+		            <?php endforeach;?>
+		            <?php else: ?>
+		                <h3>Tidak ada Data Siswa</h3>
+		            <?php endif;?>
+		        </tbody>
+		  		</table>
+		    </div>
+		    <div id="guru_tab" class="tab-pane fade">
+		      <table class="table table-bordered tab-pane" style="position: relative;" id="guru" width="100%" cellspacing="0">
+		        <thead>
+		            <tr>
+		            <th>NO</th>
+		            <th>NIS</th>
+		            <th>NAMA SISWA</th>
+		            <th>KELAS</th>
+		            <th>TAHUN</th>
+		            <th>STATUS</th>
+		            <th>AKSI</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
+		            <?php $no=1; foreach($data_siswa as $key => $data):?>
+		            <tr>
+		                <td><?=$no++;?></td>
+		                <td><?=$data->nis;?></td>
+		                <td><?=$data->nama;?></td>
+		                <td><?=$data->kelas;?></td>
+		                <td><?=$data->tahun_masuk;?></td>
+		                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
+		                <td>
+		                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
+		                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
+		                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
+		                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
+		                </td>
+		            </tr>
+		            <?php endforeach;?>
+		            <?php else: ?>
+		                <h3>Tidak ada Data Guru</h3>
+		            <?php endif;?>
+		        </tbody>
+		  		</table>
+		    </div>
+		    <div id="pegawai_tab" class="tab-pane fade">
+		      <table class="table table-bordered tab-pane" style="position: relative;" id="pegawai" width="100%" cellspacing="0">
+		        <thead>
+		            <tr>
+		            <th>NO</th>
+		            <th>NIS</th>
+		            <th>NAMA SISWA</th>
+		            <th>KELAS</th>
+		            <th>TAHUN</th>
+		            <th>STATUS</th>
+		            <th>AKSI</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <?php if(!empty($data_siswaa) && is_array($data_siswaa)):?>
+		            <?php $no=1; foreach($data_siswa as $key => $data):?>
+		            <tr>
+		                <td><?=$no++;?></td>
+		                <td><?=$data->nis;?></td>
+		                <td><?=$data->nama;?></td>
+		                <td><?=$data->kelas;?></td>
+		                <td><?=$data->tahun_masuk;?></td>
+		                <td><?php if($data->status == 1){echo "<span class=\"label label-success\">Aktif</span>";}else{echo "<span class=\"label label-danger\">Tidak Aktif</span>";}?></td>
+		                <td>
+		                	<!-- <button class="btn btn-success" onclick="get_edit(<?=$data->id_poli?>)"><i class="fa fa-pencil"></i></button> -->
+		                	<button class="btn btn-info" onclick="detail(<?=$data->nis?>)"><i class="fa fa-info-circle"></i></button>
+		                	<a class="btn btn-success" href="<?=base_url('Calon/edit').'/'.$data->nis?>"><i class="fa fa-pencil"></i></a>
+		                	<button class="btn btn-danger" onclick="hapus(<?=$data->nis?>)"><i class="fa fa-trash"></i></button>
+		                </td>
+		            </tr>
+		            <?php endforeach;?>
+		            <?php else: ?>
+		                <h3>Tidak ada Data Pegawai</h3>
+		            <?php endif;?>
+		        </tbody>
+		  		</table>
+		    </div>
+		  </div>			
 		</div>
 		</section>
 	<?php }elseif ($page_load == "edit") { ?>
@@ -293,6 +288,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+      $('#dataTable').DataTable();
       $('#siswa').DataTable();
       $('#guru').DataTable();
       $('#pegawai').DataTable();
