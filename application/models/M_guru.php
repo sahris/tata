@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_guru extends CI_Model {
 
-	public function getAll()
+	public function getAll($tahun)
 	{
-		return $this->db->get('tb_guru')->result();
+		return $this->db->get_where('tb_guru',['tahun' => $tahun]);
 	}	
 
 	public function getDetail($id)

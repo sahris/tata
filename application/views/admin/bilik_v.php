@@ -50,7 +50,7 @@
 				            	}
 				             ?></span></a></li>
 				            <li>
-				            	<a class="btn btn-success" id="btn_setting" style="color: white;" href="<?=base_url('Dashboard/index')."/".$data->tahun;?>">Atur Bilik <i class="fa fa-cog"></i></a>
+				            	<a class="btn btn-success" id="btn_setting" style="color: white;" href="<?=base_url('menu_bilik/index')."/".$data->tahun;?>">Atur Bilik <i class="fa fa-cog"></i></a>
 			            		<button class="btn btn-warning" style="width: 49%;" id="btn-aktif-<?=$data->id_bilik?>" class="text-center" onclick="update(<?=$data->id_bilik?>)">Edit <i class="fa fa-pencil"></i></button>
 			            		<button class="btn btn-danger" style="width: 49%;" id="btn-aktif-<?=$data->id_bilik?>" class="text-center" onclick="update(<?=$data->id_bilik?>)">Hapus <i class="fa fa-trash"></i></button>
 				            </li>

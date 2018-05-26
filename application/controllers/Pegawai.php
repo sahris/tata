@@ -11,10 +11,11 @@ class Pegawai extends CI_Controller {
 
 	public function index()
 	{
+		$tahun = $this->session->userdata('tahun');
 		$data['title'] = "Master Pegawai";
 		$data['content'] = "admin/pegawai_v.php";
 
-		$data['isi'] = $this->mp->getAll()->result();
+		$data['isi'] = $this->mp->getAll($tahun)->result();
 
 		$this->load->view('admin_temp', $data);
 	}

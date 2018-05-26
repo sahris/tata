@@ -11,8 +11,7 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		$tahun = $this->uri->segment(3);
-		$this->session->set_userdata('tahun', $tahun);
+		$tahun = $this->session->userdata('tahun');
 		$data['data_calon'] = $this->md->get_all('tb_calon',$tahun)->result();
 		$data['title'] = "Dashboard";
 		$data['content'] = "admin/dashboard_v.php";

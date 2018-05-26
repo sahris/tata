@@ -11,10 +11,11 @@ class Guru extends CI_Controller {
 
 	public function index()
 	{
+		$tahun = $this->session->userdata('tahun');
 		$data['title'] = "Master Guru";
 		$data['content'] = "admin/guru_v.php";
 
-		$data['isi'] = $this->mg->getAll()->result();
+		$data['isi'] = $this->mg->getAll($tahun)->result();
 		$this->load->view('admin_temp', $data);
 	}
 

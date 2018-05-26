@@ -161,7 +161,7 @@
             <i class="fa  fa-folder-o"></i> <span>Bilik Pemilih</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="treeview" style="<?php if ($this->session->userdata('hak_akses') == 1) {echo "display: block;";}else{echo "display: none;";} ?>">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Master Data</span>
@@ -175,7 +175,7 @@
             <li><a href="<?=base_url().'pegawai'?>"><i class="fa fa-circle-o"></i> Data Pegawai</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview" style="<?php if ($this->session->userdata('hak_akses') == 1) {echo "display: block;";}else{echo "display: none;";} ?>">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Data Polling</span>

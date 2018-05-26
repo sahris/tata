@@ -11,10 +11,11 @@ class Siswa extends CI_Controller {
 
 	public function index()
 	{
+		$tahun = $this->session->userdata('tahun');
 		$data['title'] = "Siswa";
 		$data['content'] = "admin/siswa_v.php";
 
-		$data['isi'] = $this->ms->getAll()->result();
+		$data['isi'] = $this->ms->getAll($tahun)->result();
 
 		$this->load->view('admin_temp', $data);
 	}

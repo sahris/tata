@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_siswa extends CI_Model {
 
-	public function getAll()
+	public function getAll($tahun)
 	{
-		return $this->db->get('tb_siswa')->result();
+		return $this->db->get_where('tb_siswa',['tahun' => $tahun]);
 	}
 
 }

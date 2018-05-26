@@ -14,10 +14,11 @@ class User_polling extends CI_Controller {
 
 	public function index()
 	{
+		$tahun = $this->session->userdata('tahun');
 		$data['title'] = "Manage User Pemilih";
 		$data['content'] = "admin/user_pemilih_v.php";
 		$data['page_load'] = "view";
-		$data['isi'] = $this->user_pemilih->getAll();
+		$data['isi'] = $this->user_pemilih->getAll('tb_user_pemilih',$tahun);
 
 		$this->load->view('admin_temp', $data);	
 	}
