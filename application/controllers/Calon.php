@@ -37,6 +37,7 @@ class Calon extends CI_Controller {
 
 			if ($foto_ketua == "") {
 				$data['no_urut'] = $this->input->post('no_urut');
+				$data['tahun'] = date('Y'); 
 				$data['c_ket'] = $this->input->post('nama_calon_ketua');
 				$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
 				$data['foto_c_w_ket'] = $_FILES['foto_calon_wakil_ketua']['name'];
@@ -62,6 +63,7 @@ class Calon extends CI_Controller {
 	            }
 			}elseif($foto_wakil_ketua == ""){
 				$data['no_urut'] = $this->input->post('no_urut');
+				$data['tahun'] = date('Y'); 
 				$data['c_ket'] = $this->input->post('nama_calon_ketua');
 				$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
 				$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
@@ -88,6 +90,7 @@ class Calon extends CI_Controller {
 	            }
 			}elseif($foto_ketua == "" && $foto_wakil_ketua == ""){
 				$data['no_urut'] = $this->input->post('no_urut');
+				$data['tahun'] = date('Y'); 
 				$data['c_ket'] = $this->input->post('nama_calon_ketua');
 				$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
 				$data['visi'] = $this->input->post('visi');
@@ -105,6 +108,7 @@ class Calon extends CI_Controller {
 	            }
 			}else{
 				$data['no_urut'] = $this->input->post('no_urut');
+				$data['tahun'] = date('Y'); 
 				$data['c_ket'] = $this->input->post('nama_calon_ketua');
 				$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
 				$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
@@ -164,6 +168,7 @@ class Calon extends CI_Controller {
 					// echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru kosong";
 					#handle data from form
 					$data['no_urut'] = $this->input->post('no_urut');
+					$data['tahun'] = date('Y'); 
 					$data['c_ket'] = $this->input->post('nama_calon_ketua');
 					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
 					$data['foto_c_ket'] = $foto_ketua;
@@ -180,6 +185,7 @@ class Calon extends CI_Controller {
 					// echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru kosong, foto wakil ketua baru ada";
 					#handle data from form
 					$data['no_urut'] = $this->input->post('no_urut');
+					$data['tahun'] = date('Y'); 
 					$data['c_ket'] = $this->input->post('nama_calon_ketua');
 					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
 					$data['foto_c_ket'] = $foto_ketua;
@@ -195,6 +201,7 @@ class Calon extends CI_Controller {
 					// echo "Foto ketua lama ada, foto wakil ketua lama ada, foto ketua baru ada, foto wakil ketua baru kosong";
 					#handle data from form
 					$data['no_urut'] = $this->input->post('no_urut');
+					$data['tahun'] = date('Y'); 
 					$data['c_ket'] = $this->input->post('nama_calon_ketua');
 					$data['cw_ket'] = $this->input->post('nama_calon_wakil_ketua');
 					$data['foto_c_ket'] = $_FILES['foto_calon_ketua']['name'];
