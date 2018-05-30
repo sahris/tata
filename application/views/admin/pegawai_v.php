@@ -16,11 +16,13 @@
 			<?php 
 			}
 		 ?>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" style="margin-right: 10px;"></i>Tambah Data</button>
-		<div class="btn-group">
-		  <a href="<?=base_url('Pegawai/getAktif')?>" class="btn btn-success">Pegawai Aktif</a>
-		  <a href="<?=base_url('Pegawai')?>" class="btn btn-default">Semua Data</a>
-		  <a href="<?=base_url('Pegawai/getTidakAktif')?>" class="btn btn-danger">Pegawai Tidak Aktif</a>
+		<div class="box_button">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" style="margin-right: 10px;"></i>Tambah Data</button>
+			<div class="btn-group">
+			  <a href="<?=base_url('Pegawai/getAktif')?>" class="btn btn-success">Pegawai Aktif</a>
+			  <a href="<?=base_url('Pegawai')?>" class="btn btn-default">Semua Data</a>
+			  <a href="<?=base_url('Pegawai/getTidakAktif')?>" class="btn btn-danger">Pegawai Tidak Aktif</a>
+			</div>
 		</div>
 	  	<table class="table" id="table_pegawai">
 	    <thead>

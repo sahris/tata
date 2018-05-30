@@ -52,7 +52,7 @@
 				            <li>
 				            	<a class="btn btn-success" id="btn_setting" style="color: white;" href="<?=base_url('menu_bilik/index')."/".$data->tahun;?>">Atur Bilik <i class="fa fa-cog"></i></a>
 			            		<button class="btn btn-warning" style="width: 49%;" id="btn-aktif-<?=$data->id_bilik?>" class="text-center" onclick="update(<?=$data->id_bilik?>)">Edit <i class="fa fa-pencil"></i></button>
-			            		<button class="btn btn-danger" style="width: 49%;" id="btn-aktif-<?=$data->id_bilik?>" class="text-center" onclick="update(<?=$data->id_bilik?>)">Hapus <i class="fa fa-trash"></i></button>
+			            		<button class="btn btn-danger" style="width: 49%;" id="btn-aktif-<?=$data->id_bilik?>" class="text-center" onclick="hapus(<?=$data->id_bilik?>)">Hapus <i class="fa fa-trash"></i></button>
 				            </li>
 				          </ul>
 				        </div>
@@ -120,6 +120,31 @@
 	  </div>
 	</div>
 
+	<!-- Modal hapus-->
+	<div id="myModalHapus" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header" style="background: red; color: white;">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Konfirmasi Hapus</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form action="<?=base_url('Bilik/delete')?>" id="form_delete_bilik" method="post">
+	        	<p>Anda yakin ingin menghapusnya?</p>
+	        	<div class="form-group">
+	        		<input type="hidden" class="form-control" name="id_bilik" placeholder="Nomor Induk Pegawai">
+	        	</div>
+	      	</div>
+		    <div class="modal-footer">
+		      <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+		    	<button type="submit" id="btn-simpan" name="simpan" class="btn btn-danger">Ya</button>
+	      </div>
+        </form>
+	    </div>
+	  </div>
+	</div>
+
 	<!-- Modal detail-->
 	<div id="myModalDetail" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -168,6 +193,10 @@
 </section>
 
 <script type="text/javascript">
+	$(document).ready(function() {
+		
+	});
+
 	function detail(id) {
 		$.ajax({
 			url : "<?=base_url('Bilik/detail')?>/" + id,
@@ -176,26 +205,24 @@
 	        success: function(data)
 	        {
 	        	// console.log(data);
-	            $("#id_bilik").text(data.id_bilik);
-	            $("#tahun").text(data.tahun);
-	            $("#mulai").text(data.mulai + " WIB");
-	            $("#selesai").text(data.selesai + " WIB");
-	            if (data.status == 1) {
-	            	var status = "Aktif";
-	            }else{
-	            	var status = "Tidak Aktif";
-	            }
-	            $("#status").text(status);
-
-	            // // console.log(data.nama_peg);
-
-	            $('#myModalDetail').modal('show');
-	            $('.modal-title').text('Detail Bilik ' + data.tahun); // Set title to Bootstrap modal title
+            $("#id_bilik").text(data.id_bilik);
+            $("#tahun").text(data.tahun);
+            $("#mulai").text(data.mulai + " WIB");
+            $("#selesai").text(data.selesai + " WIB");
+            if (data.status == 1) {
+            	var status = "Aktif";
+            }else{
+            	var status = "Tidak Aktif";
+            }
+            $("#status").text(status);
+            // // console.log(data.nama_peg);
+            $('#myModalDetail').modal('show');
+            $('.modal-title').text('Detail Bilik ' + data.tahun); // Set title to Bootstrap modal title
 
 	        },
 	        error: function (jqXHR, textStatus, errorThrown)
 	        {
-	            alert('Error get data from ajax');
+            alert('Error get data from ajax');
 	        }
 		});
 	}
@@ -207,22 +234,42 @@
 			dataType: "JSON",
 			success: function(data) {
 				// console.log(data);
-	            $('[name="id_bilik"]').val(data.id_bilik);
-	            $('[name="tahun"]').val(data.tahun);
-	            $('[name="mulai"]').val(data.mulai);
-	            $('[name="selesai"]').val(data.selesai);
-	            
-	            $('[name="status"]').val(status);
+        $('[name="id_bilik"]').val(data.id_bilik);
+        $('[name="tahun"]').val(data.tahun);
+        $('[name="mulai"]').val(data.mulai);
+        $('[name="selesai"]').val(data.selesai);
+        
+        $('[name="status"]').val(status);
 
-	            // // console.log(data.nama_peg);
+        // // console.log(data.nama_peg);
 
-	            $('#myModal').modal('show');
-	            $('.modal-title').text('Edit Bilik ' + data.tahun);
+        $('#myModal').modal('show');
+        $('.modal-title').text('Edit Bilik ' + data.tahun);
 			},
 			error: function (jqXHR, textStatus, errorThrown)
-	        {
-	            alert('Error update data from ajax');
-	        }
+      {
+        alert('Error update data from ajax');
+      }
+		});
+	}
+
+	function hapus(id) {
+		$.ajax({
+			url : "<?=base_url('Bilik/detail')?>/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+        	console.log(data);
+          $('[name="id_bilik"]').val(data.id_bilik);
+          $('#myModalHapus').modal('show');
+          $('.modal-title').text('Detail Bilik ' + data.tahun); // Set title to Bootstrap modal title
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+          alert('Error get data from ajax');
+        }
 		});
 	}
 </script>

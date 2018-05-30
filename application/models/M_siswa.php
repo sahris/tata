@@ -5,7 +5,17 @@ class M_siswa extends CI_Model {
 
 	public function getAll($tahun)
 	{
-		return $this->db->get_where('tb_siswa',['tahun' => $tahun]);
+		$sql = $this->db->get_where('tb_siswa',['tahun' => $tahun]);
+		if ($sql->num_rows() <= 0) {
+			$ret['recordsTotal'] = 0;
+			$ret['recordsFiltered'] = 0;
+			$ret['data'] = 0;
+		}else{
+			$ret['recordsTotal'] = $sql->num_rows();
+			$ret['recordsFiltered'] = $sql->num_rows();
+			$ret['data'] = $sql->result();
+		}
+		return $ret;
 	}
 
 }

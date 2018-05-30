@@ -33,13 +33,13 @@ class M_guru extends CI_Model {
 	public function update($table, $data, $id)
 	{
 		$this->db->where('id_guru', $id);
-		$this->db->update($table, $data);
+		return $this->db->update($table, $data);
 	}
 
 	public function delete($table, $where)
 	{
 		$this->db->where('id_guru', $where);
-		$this->db->delete($table);
+		return $this->db->delete($table);
 	}
 }
 

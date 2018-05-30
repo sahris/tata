@@ -52,7 +52,11 @@
   <script type="text/javascript" src="<?=base_url('assets/DataTables/datatables.min.js')?>"></script>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('#table_siswa').DataTable();
+      $('#table_siswa').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax":"<?=base_url('Siswa/index')?>"
+      });
       $('#nis').select2();
     });
   </script>

@@ -29,6 +29,7 @@ class Guru extends CI_Controller {
 				'jk' => $this->input->post('jk'),
 				'agama' => $this->input->post('agama'),
 				'no_telp' => $this->input->post('no_telp'),
+				'tahun' => $this->session->userdata('tahun'),
 				'status' => $this->input->post('status')
 			);
 
@@ -57,12 +58,12 @@ class Guru extends CI_Controller {
 			$sql = $this->mg->update('tb_guru', $data, $id);
 
 			if ($sql) {
-				$data = $this->session->set_flashdata('success', 'Data berhasil diupdate');
+				$this->session->set_flashdata('success', 'Data berhasil diupdate');
 			}else{
-				$data = $this->session->set_flashdata('error', 'Gagal mengupdate data');
+				$this->session->set_flashdata('error', 'Gagal mengupdate data');
 			}
 
-			redirect('Guru','refresh', $data);
+			redirect('Guru','refresh');
 		}
 	}
 

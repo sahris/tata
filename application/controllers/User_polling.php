@@ -25,12 +25,13 @@ class User_polling extends CI_Controller {
 
 	public function add()
 	{
+		$tahun = $this->session->userdata('tahun');
 		$data['title'] = "Tambah User Pemilih";
 		$data['content'] = "admin/user_pemilih_v.php";
 		$data['page_load'] = "add";
-		$data['data_siswa'] = $this->siswa->getAll();
-		$data['data_guru'] = $this->guru->getAll();
-		$data['data_pegawai'] = $this->pegawai->getAll();
+		$data['data_siswa'] = $this->siswa->getAll($tahun);
+		$data['data_guru'] = $this->guru->getAll($tahun);
+		$data['data_pegawai'] = $this->pegawai->getAll($tahun);
 
 		$this->load->view('admin_temp', $data);
 	}

@@ -15,7 +15,7 @@ class Siswa extends CI_Controller {
 		$data['title'] = "Siswa";
 		$data['content'] = "admin/siswa_v.php";
 
-		$data['isi'] = $this->ms->getAll($tahun)->result();
+		$data['isi'] = $this->ms->getAll($tahun);
 
 		$this->load->view('admin_temp', $data);
 	}

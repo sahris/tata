@@ -17,7 +17,7 @@ class M_bilik extends CI_Model {
 
 	public function insert($table, $data)
 	{
-		$this->db->insert($table, $data);
+		return $this->db->insert($table, $data);
 	}
 
 	public function getId($table, $id)
@@ -36,6 +36,12 @@ class M_bilik extends CI_Model {
 	{
 		$this->db->where('status', 0);
 		return $this->db->get('tb_bilik');
+	}
+
+	public function delete($table, $id)
+	{
+		$this->db->where('id_bilik',$id);
+		return $this->db->delete($table);
 	}
 
 }

@@ -72,7 +72,32 @@ class Bilik extends CI_Controller {
 			);
 
 			$sql = $this->mb->insert('tb_bilik', $data);
+			if ($sql) {
+				$msg = "Berhasil insert data";
+				$this->session->set_flashdata('success',$msg);
+			}else{
+				$msg = "Gagal insert data";
+				$this->session->set_flashdata('error',$msg);
+			}
 			redirect('bilik','refresh');
+		}
+	}
+
+	public function delete()
+	{
+		if ($this->input->method() == "post") {
+			$id = $this->input->post('id_bilik');
+			$sql_delete = $this->mb->delete('tb_bilik',$id);
+			if ($sql_delete) {
+				$ret['status'] = 200;
+				$msg = "Berhasil hapus data";
+				$this->session->set_flashdata('success',$msg);
+			}else{
+				$ret['status'] = 500;
+				$msg = "Gagal hapus data";
+				$this->session->set_flashdata('error',$msg);
+			}
+			redirect('Bilik','refresh');
 		}
 	}
 
